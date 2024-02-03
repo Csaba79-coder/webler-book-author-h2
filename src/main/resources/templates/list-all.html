@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>List All</title>
+  </head>
+  <body>
+    <h1>List of Authors and Books</h1>
+
+    <table th:id="authorTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Author Name</th>
+          <th>Books</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="author : ${authors}">
+          <td th:text="${author.id}"></td>
+          <td th:text="${author.name}"></td>
+          <td>
+            <ul>
+              <li th:each="book : ${author.books}" th:text="${book.title}"></li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a href="/">
+      <button type="button">Back to Main Page</button>
+    </a>
+
+  </body>
+</html>
